@@ -1,0 +1,22 @@
+Idea for classes for UML/Program
+
+Only one class ----> Expesnses_finance class (income and savings will be sent as a parameter)
+
+Operations for the class
+
+1. get/set income
+
+2. get/set savings
+
+3. calcExpenses-add up the given amounts to get a total monetary value
+
+4. showExpenses-show a pie chart of all the expenses, along with the displaying the total and display the less spending suggestion
+
+5. lessSpending-decide what to spend less on from the given reasons and amounts in expenses
+
+6. recommdations- Conditional statements to give helpful advice according to the values given
+Examples
+In debt ---> use interest from savings to help against the debt 
+income = 0 ---> output a message to say "Get a job"
+expenses = 0 ---> output a message to say "Good job!"
+Income > Expenses ---> output a message to say "Put the rest in saving"    
