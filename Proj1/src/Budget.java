@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.HashMap;
 
 public class Budget {
@@ -5,8 +6,11 @@ public class Budget {
 	private double income;
 	private double savingsAmt;
 	private double totalExpenses;
+	private BudgetLog budgetLog = new BudgetLog();
 
 	HashMap<String, PurchaseCategory> purchaseCategories = new HashMap<>();
+	
+	
 	
 	public void SetIncome(double income) {
 		this.income = income;
@@ -37,6 +41,9 @@ public class Budget {
 	public void AddExpense(String categoryName, double expenseAmt) {
 		PurchaseCategory category = purchaseCategories.get(categoryName);
 		
+		LocalDate currentDate = LocalDate.now();
+		
+		budgetLog.Log(categoryName, expenseAmt, currentDate);
 		
 		category.AddExpense(expenseAmt);
 		totalExpenses += expenseAmt;
@@ -46,7 +53,8 @@ public class Budget {
 		return totalExpenses;
 	}
 	
-	
-	
+	public BudgetLog GetBudgetLog() {
+		return budgetLog;
+	}
 	
 }

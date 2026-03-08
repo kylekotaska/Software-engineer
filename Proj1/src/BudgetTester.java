@@ -1,5 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
 import java.util.Random;
 
 import org.junit.jupiter.api.Test;
@@ -109,5 +110,52 @@ class BudgetTester {
 		
 		assertEquals(expected, personalCat.GetExpenseLimit());
 	}
+	
+	@Test
+	void testLog() {
+		Budget budget = new Budget();
+		
+		Random rand = new Random();
+		
+		double foodLimit = rand.nextDouble();
+		double foodExpense = rand.nextDouble();
+		double foodExpense2= rand.nextDouble();
+		
+		budget.AddExpenseCategory("Food", foodLimit);
+		budget.AddExpense("Food", foodExpense);
+		budget.AddExpense("Food", foodExpense2);
+		
+		BudgetLog log = budget.GetBudgetLog();
+		
+		log.PrintPurchaseHistory();
+	}
+	
+	@Test
+	void testLogInfo() {
+		Budget budget = new Budget();
+		
+		Random rand = new Random();
+		
+		LocalDate currentDate = LocalDate.now();
+		
+		double foodLimit = rand.nextDouble();
+		
+		double foodExpense = rand.nextDouble();
+		
+		budget.AddExpenseCategory("Food", foodLimit);
+		budget.AddExpense("Food", foodExpense);
+		
+		BudgetLog log = budget.GetBudgetLog();
+		
+		LocalDate actualDate = log.purchaseHistory.get(0).GetDateOfPurchase();
+		double actualExpense = log.purchaseHistory.get(0).GetExpenseAmount();
+		String actualCategory = log.purchaseHistory.get(0).GetPurchaseType();
+		
+		assertEquals(currentDate, actualDate);
+		assertEquals(foodExpense, actualExpense);
+		assertEquals("Food", actualCategory);
+	}
+	
+	
 
 }
