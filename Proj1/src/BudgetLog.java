@@ -12,7 +12,7 @@ public class BudgetLog {
 		private LocalDate dateOfPurchase;
 		private String logMsg;
 		
-		public PurchaseLog(String categoryName, double expenseAmt, LocalDate dateOfPurchase) {
+		private PurchaseLog(String categoryName, double expenseAmt, LocalDate dateOfPurchase) {
 			this.categoryName = categoryName;
 			this.expenseAmt = expenseAmt;
 			this.dateOfPurchase = dateOfPurchase;
