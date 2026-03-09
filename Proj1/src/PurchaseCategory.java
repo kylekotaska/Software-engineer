@@ -10,23 +10,23 @@ public class PurchaseCategory {
 		this.expenseLimit = expenseLimit;
 	}
 	
-	public void SetExpenseLimit(double expenseLimit) {
+	public void setExpenseLimit(double expenseLimit) {
 		this.expenseLimit = expenseLimit;
 	}
 	
-	public double GetExpenseLimit() {
+	public double getExpenseLimit() {
 		return expenseLimit;
 	}
 	
-	public void AddExpense(double expenseAmt) {
+	public void addExpense(double expenseAmt) {
 		this.expenseTotal += expenseAmt;
 	}
 	
-	public double GetExpenseTotal() {
+	public double getExpenseTotal() {
 		return expenseTotal;
 	}
 	
-	public String GetName() {
+	public String getName() {
 		return categoryName;
 	}
 	
@@ -39,15 +39,15 @@ public class PurchaseCategory {
 		
 		PurchaseCategory objCategory = (PurchaseCategory) obj;
 		
-		if (objCategory.GetExpenseLimit() != expenseLimit) {
+		if (objCategory.getExpenseLimit() != expenseLimit) {
 			return false;
 		}
 		
-		if (objCategory.GetExpenseTotal() != expenseTotal) {
+		if (objCategory.getExpenseTotal() != expenseTotal) {
 			return false;
 		}
 		
-		if (objCategory.GetName() != categoryName) {
+		if (!objCategory.getName().equals(categoryName)) {
 			return false;
 		}
 		
