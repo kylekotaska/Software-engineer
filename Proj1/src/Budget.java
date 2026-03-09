@@ -8,52 +8,50 @@ public class Budget {
 	private double totalExpenses;
 	private BudgetLog budgetLog = new BudgetLog();
 
-	HashMap<String, PurchaseCategory> purchaseCategories = new HashMap<>();
+	private HashMap<String, PurchaseCategory> purchaseCategories = new HashMap<>();
 	
-	
-	
-	public void SetIncome(double income) {
+	public void setIncome(double income) {
 		this.income = income;
 	}
 	
-	public void SetSavings(double savingsAmt) {
+	public void setSavings(double savingsAmt) {
 		this.savingsAmt = savingsAmt;
 	}
 	
-	public double GetIncome() {
+	public double getIncome() {
 		return income;
 	}
 	
-	public double GetSavings() {
+	public double getSavings() {
 		return savingsAmt;
 	}
 	
-	public void AddExpenseCategory(String categoryName, double expenseLimit) {
+	public void addExpenseCategory(String categoryName, double expenseLimit) {
 		PurchaseCategory newCategory = new PurchaseCategory(categoryName, expenseLimit);
 		
 		purchaseCategories.put(categoryName, newCategory);
 	}
 	
-	public PurchaseCategory GetExpenseCategory(String categoryName) {
+	public PurchaseCategory getExpenseCategory(String categoryName) {
 		return purchaseCategories.get(categoryName);
 	}
 	
-	public void AddExpense(String categoryName, double expenseAmt) {
+	public void addExpense(String categoryName, double expenseAmt) {
 		PurchaseCategory category = purchaseCategories.get(categoryName);
 		
 		LocalDate currentDate = LocalDate.now();
 		
-		budgetLog.Log(categoryName, expenseAmt, currentDate);
+		budgetLog.log(categoryName, expenseAmt, currentDate);
 		
-		category.AddExpense(expenseAmt);
+		category.addExpense(expenseAmt);
 		totalExpenses += expenseAmt;
 	}
 	
-	public double GetExpenseTotal() {
+	public double getExpenseTotal() {
 		return totalExpenses;
 	}
 	
-	public BudgetLog GetBudgetLog() {
+	public BudgetLog getBudgetLog() {
 		return budgetLog;
 	}
 	
