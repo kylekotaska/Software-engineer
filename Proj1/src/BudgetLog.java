@@ -2,8 +2,7 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 
 public class BudgetLog {
-	
-	ArrayList<PurchaseLog> purchaseHistory = new ArrayList<>();
+	private ArrayList<PurchaseLog> purchaseHistory = new ArrayList<>();
 	
 	public class PurchaseLog {
 		
@@ -20,15 +19,15 @@ public class BudgetLog {
 			this.logMsg = "Purchase Type: " + categoryName + ", Money Spent: $" + expenseAmt + ", Purchase Date: " + dateOfPurchase;
 		}
 		
-		public String GetPurchaseType() {
+		public String getPurchaseType() {
 			return categoryName;
 		}
 		
-		public LocalDate GetDateOfPurchase() {
+		public LocalDate getDateOfPurchase() {
 			return dateOfPurchase;
 		}
 		
-		public double GetExpenseAmount() {
+		public double getExpenseAmount() {
 			return expenseAmt;
 		}
 		
@@ -37,13 +36,13 @@ public class BudgetLog {
 		}
 	}
 	
-	public void Log(String categoryName, double expenseAmt, LocalDate dateOfPurchase) {
+	public void log(String categoryName, double expenseAmt, LocalDate dateOfPurchase) {
 		PurchaseLog newLog = new PurchaseLog(categoryName, expenseAmt, dateOfPurchase);
 		
 		purchaseHistory.add(newLog);
 	}
 	
-	public void PrintPurchaseHistory() {
+	public void printPurchaseHistory() {
 		for (int i = 0; i < purchaseHistory.size(); i++) {
 			purchaseHistory.get(i).PrintLog();
 		}
