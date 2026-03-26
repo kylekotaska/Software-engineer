@@ -15,9 +15,9 @@ class BudgetTester {
 		
 		Budget budget = new Budget();
 		
-		budget.SetIncome(income);
+		budget.setIncome(income);
 		
-		assertEquals(income, budget.GetIncome());
+		assertEquals(income, budget.getIncome());
 		
 	}
 	
@@ -29,9 +29,9 @@ class BudgetTester {
 		
 		Budget budget = new Budget();
 		
-		budget.SetSavings(savingsAmt);
+		budget.setSavings(savingsAmt);
 		
-		assertEquals(savingsAmt, budget.GetSavings());
+		assertEquals(savingsAmt, budget.getSavings());
 	}
 	
 	@Test
@@ -42,9 +42,9 @@ class BudgetTester {
 		
 		double foodLimit = rand.nextDouble();
 		
-		budget.AddExpenseCategory("Food", foodLimit);
+		budget.addExpenseCategory("Food", foodLimit);
 		
-		PurchaseCategory actualCat = budget.GetExpenseCategory("Food");
+		PurchaseCategory actualCat = budget.getExpenseCategory("Food");
 		
 		PurchaseCategory experimentalCat = new PurchaseCategory("Food", foodLimit);
 		
@@ -61,15 +61,15 @@ class BudgetTester {
 		
 		double personalExpense = rand.nextDouble();
 		
-		budget.AddExpenseCategory("Personal", personalLimit);
+		budget.addExpenseCategory("Personal", personalLimit);
 		
-		budget.AddExpense("Personal", personalExpense);
+		budget.addExpense("Personal", personalExpense);
 		
 		double expectedTotal = personalExpense;
 		
-		PurchaseCategory personalCat = budget.GetExpenseCategory("Personal");
+		PurchaseCategory personalCat = budget.getExpenseCategory("Personal");
 		
-		assertEquals(expectedTotal, personalCat.GetExpenseTotal());
+		assertEquals(expectedTotal, personalCat.getExpenseTotal());
 	}
 	
 	@Test
@@ -84,15 +84,15 @@ class BudgetTester {
 		double necessitiesPurchase = rand.nextDouble();
 		double personalPurchase = rand.nextDouble();
 		
-		budget.AddExpenseCategory("Necessities", necessitiesLimit);
-		budget.AddExpenseCategory("Personal", personalLimit);
+		budget.addExpenseCategory("Necessities", necessitiesLimit);
+		budget.addExpenseCategory("Personal", personalLimit);
 		
-		budget.AddExpense("Personal", personalPurchase);
-		budget.AddExpense("Necessities", necessitiesPurchase);
+		budget.addExpense("Personal", personalPurchase);
+		budget.addExpense("Necessities", necessitiesPurchase);
 		
 		double expectedTotal = personalPurchase + necessitiesPurchase;
 		
-		assertEquals(expectedTotal, budget.GetExpenseTotal());
+		assertEquals(expectedTotal, budget.getExpenseTotal());
 		
 	}
 	
@@ -104,11 +104,11 @@ class BudgetTester {
 		
 		double expected = rand.nextDouble();
 		
-		budget.AddExpenseCategory("Personal", expected);
+		budget.addExpenseCategory("Personal", expected);
 		
-		PurchaseCategory personalCat = budget.GetExpenseCategory("Personal");
+		PurchaseCategory personalCat = budget.getExpenseCategory("Personal");
 		
-		assertEquals(expected, personalCat.GetExpenseLimit());
+		assertEquals(expected, personalCat.getExpenseLimit());
 	}
 	
 	@Test
@@ -121,13 +121,13 @@ class BudgetTester {
 		double foodExpense = rand.nextDouble();
 		double foodExpense2= rand.nextDouble();
 		
-		budget.AddExpenseCategory("Food", foodLimit);
-		budget.AddExpense("Food", foodExpense);
-		budget.AddExpense("Food", foodExpense2);
+		budget.addExpenseCategory("Food", foodLimit);
+		budget.addExpense("Food", foodExpense);
+		budget.addExpense("Food", foodExpense2);
 		
-		BudgetLog log = budget.GetBudgetLog();
+		BudgetLog log = budget.getBudgetLog();
 		
-		log.PrintPurchaseHistory();
+		log.printPurchaseHistory();
 	}
 	
 	@Test
@@ -142,14 +142,14 @@ class BudgetTester {
 		
 		double foodExpense = rand.nextDouble();
 		
-		budget.AddExpenseCategory("Food", foodLimit);
-		budget.AddExpense("Food", foodExpense);
+		budget.addExpenseCategory("Food", foodLimit);
+		budget.addExpense("Food", foodExpense);
 		
-		BudgetLog log = budget.GetBudgetLog();
+		BudgetLog log = budget.getBudgetLog();
 		
-		LocalDate actualDate = log.purchaseHistory.get(0).GetDateOfPurchase();
-		double actualExpense = log.purchaseHistory.get(0).GetExpenseAmount();
-		String actualCategory = log.purchaseHistory.get(0).GetPurchaseType();
+		LocalDate actualDate = log.purchaseHistory.get(0).getDateOfPurchase();
+		double actualExpense = log.purchaseHistory.get(0).getExpenseAmount();
+		String actualCategory = log.purchaseHistory.get(0).getPurchaseType();
 		
 		assertEquals(currentDate, actualDate);
 		assertEquals(foodExpense, actualExpense);

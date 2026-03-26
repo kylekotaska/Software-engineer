@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 
 public class BudgetLog {
-	private ArrayList<PurchaseLog> purchaseHistory = new ArrayList<>();
+	public ArrayList<PurchaseLog> purchaseHistory = new ArrayList<>();
 	
 	public class PurchaseLog {
 		
